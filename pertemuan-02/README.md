@@ -20,3 +20,5 @@ URL: [https://2611500053.github.io/2611500053-PWD-TI1J-26270/]
 
 Buat file taklengkap.html
 isi baris kode untuk latihan error tolerance HTML P2
+Membuat struktur awal emmet.html
+Membuat struktur header+main+footer di dalam elemen body menggunakan emmet abreviation
