@@ -21,4 +21,4 @@
 - Perbaikan yang dilakukan: [memperbaiki path img]
 - Hasil pengujian ulang: [halaman profil mahasiswa dan formulir berhasil tampil di github tanpa galat]
 ## GitHub Pages
-URL: [https://github.com/2611500053/2611500053-PWD-TI1J-26270/tree/main/pertemuan-03]
+URL: [https://2611500053.github.io/2611500053-PWD-TI1J-26270/pertemuan-03/]
