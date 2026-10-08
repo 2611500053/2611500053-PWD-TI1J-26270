@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 12px;
   font-family: Arial, sans-serif;
-  color: #111827;
+  color: #461847;
   background-color: #eef2f7;
 }
 
@@ -16,12 +16,29 @@ header {
   color: #ffffff;
   padding: 20px;
   margin-bottom: 20px;
-  border: 1px solid #00264d;
+  border: 1px solid #6b0362;
 }
 
 header h1 {
   margin: 0 0 16px;
   font-size: 28px;
+}
+
+nav ul {
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 8px;
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+nav a {
+color: #ffffff;
+font-weight: bold;
+text-decoration: none;
 }
 
 section {
@@ -36,7 +53,7 @@ section {
 }
 
 #home h2 {
-  color: #003366;
+  color: #660066;
   border-bottom: 2px solid #003366;
   padding-bottom: 6px;
   margin-top: 0;
@@ -81,7 +98,7 @@ section {
   line-height: 1.5;
   margin: 6px 0;
   padding: 6px 0;
-  border-bottom: 1px solid #8f0c8f;
+  border-bottom: 1px solid #ffe1ff;
 }
 
 #about ol {
@@ -100,8 +117,8 @@ section {
 }
 
 #contact h2 {
-  color: #a052af;
-  border-bottom: 2px solid #d77be9;
+  color: #490257;
+  border-bottom: 2px solid #5c096e;
   padding-bottom: 6px;
   margin-top: 0;
   margin-bottom: 16px;
@@ -117,13 +134,13 @@ section {
 }
 
 .input-form {
-  background-color: #ecc9ec;
-  color: #841188;
+  background-color: #f1c8f1;
+  color: #fee5ff;
   font-family: Arial, sans-serif;
   font-size: 16px;
   padding: 8px;
   margin: 4px 0;
-  border: 1px solid #72199b;
+  border: 1px solid #610469;
   width: 100%;
   max-width: 100%;
 }
@@ -135,12 +152,12 @@ section {
 
 #contact button {
   cursor: pointer;
-  background-color: #b744bb;
+  background-color: #470349;
   color: #e9c1f8;
   font-weight: bold;
   padding: 8px 14px;
   margin: 8px 6px 0 0;
-  border: 1px solid #9a42ce;
+  border: 1px solid #8c49b6;
 }
 
 /* Footer */
