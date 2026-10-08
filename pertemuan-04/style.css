@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 12px;
   font-family: Arial, sans-serif;
-  color: #461847;
+  color: #111827;
   background-color: #eef2f7;
 }
 
@@ -16,7 +16,7 @@ header {
   color: #ffffff;
   padding: 20px;
   margin-bottom: 20px;
-  border: 1px solid #6b0362;
+  border: 1px solid #00264d;
 }
 
 header h1 {
@@ -53,7 +53,7 @@ section {
 }
 
 #home h2 {
-  color: #660066;
+  color: #003366;
   border-bottom: 2px solid #003366;
   padding-bottom: 6px;
   margin-top: 0;
@@ -82,15 +82,15 @@ section {
 }
 
 #about h2 {
-  color: #721285;
-  border-bottom: 2px solid #8b088b;
+  color: #003366;
+  border-bottom: 2px solid #003366;
   padding-bottom: 6px;
   margin-top: 0;
   margin-bottom: 16px;
 }
 
 #about h3 {
-  color: #6d0a81;
+  color: #1f4e78;
   margin-bottom: 6px;
 }
 
@@ -98,14 +98,14 @@ section {
   line-height: 1.5;
   margin: 6px 0;
   padding: 6px 0;
-  border-bottom: 1px solid #ffe1ff;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 #about ol {
-  color: #63055c;
+  color: #333333;
   margin: 8px 0;
   padding: 8px 24px;
-  border: 1px solid #790b6f;
+  border: 1px solid #e6e6e6;
 }
 
 #contact {
@@ -117,8 +117,8 @@ section {
 }
 
 #contact h2 {
-  color: #490257;
-  border-bottom: 2px solid #5c096e;
+  color: #003366;
+  border-bottom: 2px solid #003366;
   padding-bottom: 6px;
   margin-top: 0;
   margin-bottom: 16px;
@@ -129,18 +129,18 @@ section {
 }
 
 #contact label {
-  color: #520b52;
+  color: #1f2937;
   font-weight: bold;
 }
 
 .input-form {
-  background-color: #f1c8f1;
-  color: #fee5ff;
+  background-color: #ffffff;
+  color: #111827;
   font-family: Arial, sans-serif;
   font-size: 16px;
   padding: 8px;
   margin: 4px 0;
-  border: 1px solid #610469;
+  border: 1px solid #94a3b8;
   width: 100%;
   max-width: 100%;
 }
@@ -151,13 +151,12 @@ section {
 }
 
 #contact button {
-  cursor: pointer;
-  background-color: #470349;
-  color: #e9c1f8;
+  background-color: #003366;
+  color: #ffffff;
   font-weight: bold;
   padding: 8px 14px;
   margin: 8px 6px 0 0;
-  border: 1px solid #8c49b6;
+  border: 1px solid #003366;
 }
 
 /* Footer */
