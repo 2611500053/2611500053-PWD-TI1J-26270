@@ -25,26 +25,26 @@ header h1 {
 }
 
 nav ul {
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-align-items: flex-start;
-gap: 8px;
-margin: 0;
-padding: 0;
-list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 nav a {
-color: #ffffff;
-font-weight: bold;
-text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 main {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
 section {
@@ -178,4 +178,22 @@ footer {
 
 footer p {
   margin: 0;
+}
+
+@media (min-width: 768px) {
+  /* aturan CSS untuk viewport dengan lebar minimal 768px */
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  nav ul {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+  }
+
+  #contact {
+    grid-column: 1 / -1;
+  }
 }
