@@ -11,7 +11,7 @@ navToggle.addEventListener("click", () => {
 });
 contactForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  console.log("Form dikirim.");
+  console.log("Form dikirim."); 
   
   if (namaInput.value.trim() === "") {
     formFeedback.textContent = "Nama tidak boleh kosong!";
@@ -22,4 +22,8 @@ contactForm.addEventListener("input", () => {
 });
 contactForm.addEventListener("reset", () => {
 formFeedback.textContent = "";
+})
+;contactForm.addEventListener("submit", (event) => {
+event.preventDefault();
+// Proses validasi formulir.
 });
