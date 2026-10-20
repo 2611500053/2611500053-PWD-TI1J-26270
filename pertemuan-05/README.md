@@ -10,6 +10,7 @@ Fitur dan Pengembangan
 - [Memilih elemen dengan `querySelector()`]:Menguji pemilihan radio button jenis pesan memakai selector `input[name="jenis_pesan"]:checked`.
 - Sempat muncul error `Cannot read properties of null` karena data yang diketik dipakai sebagai id di `getElementById()`. Diperbaiki dengan memakai id elemen yang benar (`nama`, `email`, `semester`) dan mengisi datanya langsung di kolom form.
 - Mengubah konten teks dengan `textContent`: Menambahkan elemen `<p id="formFeedback"></p>` di dalam form kontak sebagai tempat pesan umpan balik, lalu menguji pengisian dan penghapusan teksnya lewat JavaScript.
+- Mengelola class dengan `classList`: Menguji pemeriksaan dan perubahan class `nav-open` pada elemen navigasi `navMenu` lewat Console menggunakan `contains()` dan `toggle()`.
 
 
 Tambahkan entri setiap kali ada perkembangan penting pada proyek.
@@ -20,6 +21,7 @@ Pengujian
 - [`querySelector('input[name="jenis_pesan":checked')`]:Sebelum memilih radio button, hasilnya `null`. Setelah memilih "Pertanyaan", hasilnya elemen `<input type="radio" id="pertanyaan" name="jenis_pesan" ...>`.
 - Membaca nilai input dengan `.value`: Mengisi kolom Nama Lengkap, Email, dan Semester pada form kontak, lalu menjalankan `document.getElementById("nama").value;`, `document.getElementById("email").value;`, dan `document.getElementById("semester").value;` di Console. Hasil aktual: `'isma fitri indriani'`, `'2611500053@mahasiswa.atmaluhur.ac.id'`, dan `'1'`. Saat kolom masih kosong, hasilnya `''` (string kosong). Nilai semester muncul sebagai teks (`'1'`), bukan angka.
 - `textContent` pada `formFeedback`: Menjalankan `document.getElementById("formFeedback").textContent = "Pesan pengujian DOM.";` di Console. Hasil aktual: teks "Pesan pengujian DOM." muncul di halaman pada elemen `formFeedback`. Setelah menjalankan `document.getElementById("formFeedback").textContent = "";`, teks hilang dari halaman.
+- `classList` pada `navMenu`: Menjalankan `navMenu.classList.contains("nav-open");` di Console. Hasil awal `false` karena class belum ada. Setelah `navMenu.classList.toggle("nav-open");` pertama, hasilnya `true` (class ditambahkan). Setelah `toggle` kedua, hasilnya `false` (class dihapus).
 
 
 Perbarui bagian ini setelah melakukan pengujian atau debugging yang relevan.

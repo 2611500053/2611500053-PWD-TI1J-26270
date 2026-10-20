@@ -4,3 +4,4 @@ const emailInput = document.getElementById("email");
 const semesterInput = document.getElementById("semester");
 const email = emailInput.value;
 const semester = semesterInput.value;
+const navMenu = document.getElementById("navMenu");
