@@ -139,3 +139,6 @@ Hasil: TI tampil "Komputasi dan pengembangan perangkat lunak", SI tampil "Sistem
 ### G.1 Perulangan for
 Menampilkan 5 target belajar dengan `for ($i = 1; $i <= 5; $i++)`, dan `switch` di dalamnya untuk menentukan teks tiap target.
 Hasil: daftar menampilkan 5 butir, dari "Target belajar ke-1: Memahami sintaks dasar PHP." sampai "Target belajar ke-5: Belum dipetakan".
+### G.2 Perulangan while
+Menampilkan nomor semester dengan `while ($nomorSemester <= 3)` dan `$nomorSemester++`.
+Hasil: daftar menampilkan "Semester 1", "Semester 2", dan "Semester 3".
