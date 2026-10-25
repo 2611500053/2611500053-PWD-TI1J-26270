@@ -142,3 +142,11 @@ Hasil: daftar menampilkan 5 butir, dari "Target belajar ke-1: Memahami sintaks d
 ### G.2 Perulangan while
 Menampilkan nomor semester dengan `while ($nomorSemester <= 3)` dan `$nomorSemester++`.
 Hasil: daftar menampilkan "Semester 1", "Semester 2", dan "Semester 3".
+## H. Fungsi Bawaan PHP dan Sintaks Keluaran
+
+### H.1 number_format()
+Menampilkan IPK dengan `number_format($ipk, 2, ',', '.')`.
+Hasil: tampil "IPK: 3,75".
+### H.2 Pemeriksaan NULL
+Memakai operator identik `===` untuk memeriksa `$catatanTambahan`.
+Hasil: dengan nilai null tampil "Catatan tambahan: Belum ada". Saat nilainya diubah ke "Catatan praktik PHP" tampil "Catatan tambahan: Catatan praktik PHP". Nilai dikembalikan ke null.
