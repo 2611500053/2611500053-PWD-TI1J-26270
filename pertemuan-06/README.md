@@ -153,3 +153,6 @@ Hasil: dengan nilai null tampil "Catatan tambahan: Belum ada". Saat nilainya diu
 ### H.3 date()
 Footer memakai `date("Y")` untuk tahun otomatis.
 Hasil: footer tampil "© 2026 Isma Fitri Indriani [2611500053]".
+### H.4 Sintaks Singkat `<?= ... ?>`
+Dipakai pada link GitHub (`PROFIL_GITHUB`), tahun (`date("Y")`), dan NIM (`$nim`).
+Hasil: link GitHub mengarah ke profil sesuai konstanta, footer menampilkan tahun dan NIM.
