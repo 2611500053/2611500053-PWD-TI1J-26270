@@ -150,3 +150,6 @@ Hasil: tampil "IPK: 3,75".
 ### H.2 Pemeriksaan NULL
 Memakai operator identik `===` untuk memeriksa `$catatanTambahan`.
 Hasil: dengan nilai null tampil "Catatan tambahan: Belum ada". Saat nilainya diubah ke "Catatan praktik PHP" tampil "Catatan tambahan: Catatan praktik PHP". Nilai dikembalikan ke null.
+### H.3 date()
+Footer memakai `date("Y")` untuk tahun otomatis.
+Hasil: footer tampil "© 2026 Isma Fitri Indriani [2611500053]".

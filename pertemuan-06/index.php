@@ -199,7 +199,7 @@ $nomorSemester++; // operator penugasan
     </section>
 
   <footer>
-    <p>&copy; 2026 Isma Fitri Indriani 2611500053</p>
+    <p>&copy; <?= date("Y") ?> <?php echo $namaMahasiswa; ?> [<?= $nim ?>]</p>
   </footer>
   <script>
     console.log("JavaScript berhasil dijalankan.");
