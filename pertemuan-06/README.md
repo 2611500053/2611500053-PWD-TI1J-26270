@@ -58,3 +58,27 @@ Hasil: halaman tetap tampil tanpa galat PHP.
 - Link GitHub memakai <?= PROFIL_GITHUB ?>.
 Hasil: nama, mata kuliah, dan tahun akademik tampil sesuai nilai variabel;
 link GitHub mengarah ke profil sesuai konstanta.
+## E. Operator PHP
+
+### E.1 Operator Aritmetika dan Penugasan
+
+Kode yang ditambahkan pada blok PHP di awal index.php:
+
+```php
+// Bagian 2: Operator
+$batasSemester = 8;
+$sisaSemester = $batasSemester - $semester;
+```
+
+Kode yang ditambahkan pada bagian Profil Singkat (di dalam `<article>`, setelah `<h3>Profil Singkat</h3>`):
+
+```php
+<p>Sisa semester hingga batas: <?php echo $sisaSemester; ?></p>
+```
+
+Alamat pengujian: http://localhost/pwd/2611500053-PWD-TI1J-26270/pertemuan-06/
+
+Hasil pengujian:
+- Halaman menampilkan "Sisa semester hingga batas: 6" (8 - 2 = 6).
+- Tidak ada pesan galat PHP.
+- Sempat muncul Parse error pada baris 15 karena tanda titik koma (;) pada deklarasi konstanta PROFIL_GITHUB hilang. Setelah titik koma ditambahkan, halaman tampil normal.
