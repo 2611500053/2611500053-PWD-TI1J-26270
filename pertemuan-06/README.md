@@ -82,3 +82,21 @@ Hasil pengujian:
 - Halaman menampilkan "Sisa semester hingga batas: 6" (8 - 2 = 6).
 - Tidak ada pesan galat PHP.
 - Sempat muncul Parse error pada baris 15 karena tanda titik koma (;) pada deklarasi konstanta PROFIL_GITHUB hilang. Setelah titik koma ditambahkan, halaman tampil normal.
+### E.3 Operator Logika dan Penerapan Hasil Pemeriksaan
+
+Kode yang ditambahkan pada blok PHP di awal index.php:
+
+```php
+$statusSemester = ($semesterValid && $statusAktif) ? "Sesuai rentang" : "Perlu diperiksa";
+```
+
+Kode yang ditambahkan pada bagian Profil Singkat:
+
+```php
+<p>Pemeriksaan rentang semester: <?php echo $statusSemester; ?></p>
+```
+
+Hasil pengujian:
+- $semester = 2 dan $statusAktif = true: tampil "Pemeriksaan rentang semester: Sesuai rentang".
+- $semester = 9: tampil "Pemeriksaan rentang semester: Perlu diperiksa".
+- Nilai $semester dikembalikan ke 2 setelah pengujian dan hasil kembali "Sesuai rentang".
