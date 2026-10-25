@@ -53,3 +53,8 @@ Hasil: halaman tetap tampil tanpa galat PHP.
 ### D.2 Konstanta
 Ditambahkan const NAMA_MATA_KULIAH dan PROFIL_GITHUB pada blok PHP yang sama.
 Hasil: halaman tetap tampil tanpa galat PHP.
+### D.4 Variabel dan Konstanta pada Halaman
+- Paragraf "Halo, saya ..." kini memakai echo untuk variabel dan print untuk konstanta.
+- Link GitHub memakai <?= PROFIL_GITHUB ?>.
+Hasil: nama, mata kuliah, dan tahun akademik tampil sesuai nilai variabel;
+link GitHub mengarah ke profil sesuai konstanta.
