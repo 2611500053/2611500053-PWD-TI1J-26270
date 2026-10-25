@@ -10,8 +10,12 @@
 
 <body>
   <?php
-// Pengujian awal eksekusi PHP.
-echo "PHP berhasil dijalankan.";
+// Komentar satu baris.
+print "Keluaran menggunakan print.";
+/*
+Komentar beberapa baris.
+Komentar ini tidak ditampilkan pada halaman.
+*/
 ?>
   <header>
     <div class="header-top">
