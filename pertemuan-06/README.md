@@ -50,3 +50,6 @@ Blok PHP ditambahkan di awal index.php (sebelum doctype) berisi variabel
 $nim, $namaMahasiswa, $programStudi, $tahunAkademik, $semester, $ipk,
 $statusAktif, dan $catatanTambahan.
 Hasil: halaman tetap tampil tanpa galat PHP.
+### D.2 Konstanta
+Ditambahkan const NAMA_MATA_KULIAH dan PROFIL_GITHUB pada blok PHP yang sama.
+Hasil: halaman tetap tampil tanpa galat PHP.
