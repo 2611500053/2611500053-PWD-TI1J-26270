@@ -43,3 +43,10 @@ Hasil pengujian:
 - Peramban menampilkan dua paragraf: "Konten HTML statis." dan "Konten yang dihasilkan oleh PHP."
 - Tampilannya sama di layar, tetapi asalnya berbeda: yang pertama ditulis langsung di HTML, yang kedua dihasilkan oleh perintah echo di PHP.
 - Pada View Page Source, keduanya muncul sebagai tag `<p>` biasa dan tidak ada kode PHP mentah.
+## D. Variabel, Konstanta, dan Tipe Data PHP
+
+### D.1 Variabel
+Blok PHP ditambahkan di awal index.php (sebelum doctype) berisi variabel
+$nim, $namaMahasiswa, $programStudi, $tahunAkademik, $semester, $ipk,
+$statusAktif, dan $catatanTambahan.
+Hasil: halaman tetap tampil tanpa galat PHP.
