@@ -156,3 +156,12 @@ Hasil: footer tampil "© 2026 Isma Fitri Indriani [2611500053]".
 ### H.4 Sintaks Singkat `<?= ... ?>`
 Dipakai pada link GitHub (`PROFIL_GITHUB`), tahun (`date("Y")`), dan NIM (`$nim`).
 Hasil: link GitHub mengarah ke profil sesuai konstanta, footer menampilkan tahun dan NIM.
+## I. Penyesuaian Atribut action pada Formulir
+
+Atribut `action` pada formulir di bagian Kontak diubah dari `index.html` menjadi `index.php`:
+
+```php
+<form id="contactForm" action="index.php" method="get" novalidate>
+```
+
+Hasil: halaman tetap tampil normal tanpa galat. Perubahan ini hanya menyesuaikan tujuan formulir, pemrosesan data formulir dibahas pada P7.
