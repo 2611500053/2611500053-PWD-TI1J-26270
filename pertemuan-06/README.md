@@ -97,6 +97,34 @@ Kode yang ditambahkan pada bagian Profil Singkat:
 ```
 
 Hasil pengujian:
-- $semester = 2 dan $statusAktif = true: tampil "Pemeriksaan rentang semester: Sesuai rentang".
+- $semester = 1 dan $statusAktif = true: tampil "Pemeriksaan rentang semester: Sesuai rentang".
 - $semester = 9: tampil "Pemeriksaan rentang semester: Perlu diperiksa".
-- Nilai $semester dikembalikan ke 2 setelah pengujian dan hasil kembali "Sesuai rentang".
+- Nilai $semester dikembalikan ke 1 setelah pengujian dan hasil kembali "Sesuai rentang".
+## F. Struktur Percabangan PHP
+
+### F.1 Percabangan if-elseif-else
+
+Kode yang ditambahkan pada blok PHP di awal index.php:
+
+```php
+// Bagian 3: Percabangan if-elseif-else
+if ($semester < 3) {
+  $keteranganSemester = "Semester awal";
+} elseif ($semester <= 6) {
+  $keteranganSemester = "Semester menengah";
+} else {
+  $keteranganSemester = "Semester akhir";
+}
+```
+
+Kode yang ditambahkan pada bagian Profil Singkat:
+
+```php
+<p>Semester: <?php echo $semester . " (" . $keteranganSemester . ")"; ?></p>
+```
+
+Hasil pengujian:
+- $semester = 2: tampil "Semester: 2 (Semester awal)".
+- $semester = 4: tampil "Semester: 4 (Semester menengah)".
+- $semester = 7: tampil "Semester: 7 (Semester akhir)".
+- Nilai $semester dikembalikan ke 1 setelah pengujian.

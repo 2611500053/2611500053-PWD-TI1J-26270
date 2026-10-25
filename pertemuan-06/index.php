@@ -5,7 +5,7 @@ $nim = "2611500053";
 $namaMahasiswa = "Isma Fitri Indriani";
 $programStudi = "TI";
 $tahunAkademik = "2026/2027";
-$semester = 2;
+$semester = 1;
 $ipk = 3.75;
 $statusAktif = true;
 $catatanTambahan = null;
@@ -15,7 +15,15 @@ const PROFIL_GITHUB = "2611500053";
 $batasSemester = 8;
 $sisaSemester = $batasSemester - $semester;
 $semesterValid = $semester >= 1 && $semester <= $batasSemester;
-$statusSemester = ($semesterValid && $statusAktif) ? "Sesuai rentang" : "Perlu diperiksa";?>
+$statusSemester = ($semesterValid && $statusAktif) ? "Sesuai rentang" : "Perlu diperiksa";
+// Bagian 3: Percabangan if-elseif-else
+if ($semester < 3) {
+$keteranganSemester = "Semester awal";
+} elseif ($semester <= 6) {
+$keteranganSemester = "Semester menengah";
+} else {
+$keteranganSemester = "Semester akhir";
+}?>
 <!doctype html>
 <html lang="id">
 
@@ -61,6 +69,7 @@ $statusSemester = ($semesterValid && $statusAktif) ? "Sesuai rentang" : "Perlu d
         <h3>Profil Singkat</h3>
         <p>Sisa semester hingga batas: <?php echo $sisaSemester; ?></p>
         <p>Pemeriksaan rentang semester: <?php echo $statusSemester; ?></p>
+        <p>Semester: <?php echo $semester . " (" . $keteranganSemester . ")"; ?></p>
         <p>Saya Mahasiswa Program Studi Teknik Informatika.</p>
 
         <h3>Target Belajar</h3>
