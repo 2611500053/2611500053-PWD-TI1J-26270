@@ -128,3 +128,6 @@ Hasil pengujian:
 - $semester = 4: tampil "Semester: 4 (Semester menengah)".
 - $semester = 7: tampil "Semester: 7 (Semester akhir)".
 - Nilai $semester dikembalikan ke 1 setelah pengujian.
+### F.2 Operator Ternary
+Menentukan $namaProdi dari $programStudi dan status mahasiswa dari $statusAktif.
+Hasil: tampil "Program Studi: Teknik Informatika (TI)" dan "Status mahasiswa: Aktif". Saat $statusAktif = false tampil "Tidak aktif". Nilai dikembalikan ke awal.
