@@ -33,3 +33,11 @@ Perubahan:
 - Pada `indexGet.php`, formulir tetap memakai `method="get"` dan
   `action` diubah menjadi `action="indexGet.php"`.
 - Kode penerimaan parameter GET dari C.3 dipertahankan.
+## E.2 Mengubah Formulir Utama dari GET menjadi POST
+
+Perubahan:
+- Pada `index.php`, tag formulir diubah dari
+  `<form id="contactForm" action="index.php" method="get" novalidate>`
+  menjadi
+  `<form id="contactForm" action="index.php" method="post" novalidate>`.
+- `indexGet.php` tidak diubah dan tetap memakai GET.
