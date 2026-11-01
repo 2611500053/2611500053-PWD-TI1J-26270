@@ -41,3 +41,12 @@ Perubahan:
   menjadi
   `<form id="contactForm" action="index.php" method="post" novalidate>`.
 - `indexGet.php` tidak diubah dan tetap memakai GET.
+## E.3 Menerima Data Formulir Menggunakan $_POST
+
+Perubahan:
+- Pada bagian atas `index.php`, kode penerimaan data diubah dari
+  `$_GET['nama']` menjadi `$_POST['nama']`.
+- Komentar diubah menjadi `// P7: penggunaan POST`.
+- Pada `script.js`, `contactForm.submit();` berada di dalam handler
+  `submit`, setelah pesan sukses validasi.
+  
