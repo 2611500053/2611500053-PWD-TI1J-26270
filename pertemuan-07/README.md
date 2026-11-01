@@ -7,3 +7,21 @@ Perubahan: menambahkan kode PHP di bagian atas `index.php`:
 Pengujian:
 1. `.../pertemuan-07/?nama=isma` -> muncul "Nama yang diterima: isma".
 2. `.../pertemuan-07/?nama=Budi%20Anduk` -> muncul "Nama yang diterima: Budi Anduk".
+## C.4 Praktik Pengiriman Formulir Menggunakan GET
+
+Perubahan:
+- Menambahkan `contactForm.submit();` pada `script.js`, setelah
+  `formFeedback.className = "form-feedback-success";`.
+- `event.preventDefault()` tetap dipertahankan agar validasi
+  JavaScript selesai dulu sebelum formulir dikirim.
+
+Pengujian:
+1. Mengisi semua kolom wajib dengan data valid, lalu klik Kirim.
+   Hasil: halaman dimuat ulang, URL berisi parameter setelah tanda `?`
+   dan dipisah tanda `&` (contoh: `?nama=...&email=...&semester=...`).
+   "Nama yang diterima: ..." muncul.
+2. Mengosongkan salah satu kolom wajib, lalu klik Kirim.
+   Hasil: pesan validasi merah muncul dan formulir tidak terkirim.
+
+Catatan: parameter lain ikut dikirim lewat GET, tetapi kode PHP saat
+ini hanya membaca dan menampilkan parameter `nama`.

@@ -77,3 +77,5 @@ contactForm.addEventListener("reset", () => {
 contactForm.addEventListener("input", () => {
 formFeedback.textContent = "";
 });
+formFeedback.textContent = "Form berhasil divalidasi.";
+formFeedback.className = "form-feedback-success";
