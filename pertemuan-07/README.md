@@ -25,3 +25,11 @@ Pengujian:
 
 Catatan: parameter lain ikut dikirim lewat GET, tetapi kode PHP saat
 ini hanya membaca dan menampilkan parameter `nama`.
+## E.1 Menyimpan Artefak Demonstrasi GET sebagai indexGet.php
+
+Perubahan:
+- Menyalin `index.php`, menempelkannya di direktori yang sama,
+  lalu mengganti namanya menjadi `indexGet.php`.
+- Pada `indexGet.php`, formulir tetap memakai `method="get"` dan
+  `action` diubah menjadi `action="indexGet.php"`.
+- Kode penerimaan parameter GET dari C.3 dipertahankan.
