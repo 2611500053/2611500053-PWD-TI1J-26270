@@ -64,3 +64,53 @@ Perubahan:
   `'input[name="minat"]:checked, input[name="minat[]"]:checked'`
   agar validasi bekerja pada formulir GET (`indexGet.php`) dan
   formulir POST (`index.php`).
+  ## F.2 Memeriksa Keberadaan dan Kelengkapan Data
+- Menambahkan `$pesanKesalahan` dan pemeriksaan data kosong (nama, email,
+  semester, tanggal, jenis pesan, program studi, pesan, minat) di dalam
+  `if ($_SERVER['REQUEST_METHOD'] === 'POST')`.
+- `trim()` menghapus spasi, `empty($minat)` memeriksa topik yang belum dipilih.
+## F.3 Memvalidasi Format dan Tipe Data
+- Menambahkan pemeriksaan semester (`FILTER_VALIDATE_INT`, rentang 1-14)
+  dan email (`FILTER_VALIDATE_EMAIL`) pada blok POST yang sama.
+- Pemeriksaan format hanya dijalankan jika data tidak kosong.
+## F.4 Memvalidasi Nilai Pilihan Formulir
+- Menambahkan pemeriksaan `in_array()` untuk jenis pesan (pertanyaan/saran),
+  program studi (SI/TI), dan topik minat (HTML/CSS), serta `is_array()`
+  dan `foreach` untuk `$minat`.
+  ## F.5 Normalisasi dan Sanitasi Data Masukan
+- Mengganti pembacaan data dengan `trim((string) ($_POST['...'] ?? ''))`
+  dan menempatkannya sebelum blok validasi F.2-F.4.
+  ## F.6 Mengamankan Keluaran HTML
+Perubahan:
+- Menghapus blok `echo` nama lama di bagian atas `index.php`.
+- Tahap 1: menampilkan `$pesanKesalahan` di bawah judul "Kontak" dengan
+  `htmlspecialchars()`, hanya jika tidak kosong (kelas `form-feedback-error`).
+- Tahap 2: menampilkan "Data yang Diterima Peladen" setelah `</form>`
+  saat permintaan POST. Semua nilai teks memakai `htmlspecialchars()`,
+  minat memakai `foreach`, dan pesan memakai `nl2br()`.
+
+Penjelasan:
+- `htmlspecialchars()` mengubah karakter khusus HTML menjadi entitas
+  sehingga ditampilkan sebagai teks, bukan markup.
+- Pengamanan keluaran berbeda dari validasi dan normalisasi; data yang
+  valid tetap diamankan saat ditampilkan.
+
+Pengujian tahap 1 (JavaScript dimatikan sementara):
+1. Mengirim formulir kosong.
+   Hasil: muncul pesan "Nama lengkap wajib diisi. Email wajib diisi.
+   Semester wajib diisi. Tanggal kunjungan wajib diisi. Jenis pesan wajib
+   dipilih. Program studi wajib dipilih. Pesan wajib diisi. Minat wajib
+   dipilih minimal satu. Jenis pesan tidak valid. Program studi tidak valid."
+2. Mengisi email dengan `bukan-email`.
+   Hasil: muncul pesan "Format email tidak valid."
+3. Mengirim formulir tanpa memilih minat.
+   Hasil: muncul pesan "Minat wajib dipilih minimal satu."
+
+Pengujian tahap 2:
+1. Mengirim formulir dengan data valid.
+   Hasil: bagian "Data yang Diterima Peladen" tampil di bawah formulir
+   berisi nama, email, semester, tanggal kunjungan, jenis pesan, program
+   studi, daftar minat, dan pesan.
+2. Mengisi kolom pesan dengan `<b>Mahasiswa</b>`.
+   Hasil: teks tampil apa adanya sebagai `<b>Mahasiswa</b>` dan tidak
+   ditafsirkan sebagai tag HTML tebal.
