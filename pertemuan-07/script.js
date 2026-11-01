@@ -43,9 +43,7 @@ if (tanggal === "") {
     formFeedback.textContent = "Tanggal Kunjungan.";
     return;
 }
-const topikDipilih = document.querySelectorAll(
-    'input[name="minat"]:checked'
-);
+const topikDipilih = document.querySelectorAll('input[name="minat"]:checked, input[name="minat[]"]:checked');
 
 if (topikDipilih.length === 0) {
     formFeedback.textContent =

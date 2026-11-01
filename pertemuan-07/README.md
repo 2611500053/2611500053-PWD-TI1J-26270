@@ -49,4 +49,18 @@ Perubahan:
 - Komentar diubah menjadi `// P7: penggunaan POST`.
 - Pada `script.js`, `contactForm.submit();` berada di dalam handler
   `submit`, setelah pesan sukses validasi.
-  
+  ## E.4 Mengakses Data dari Berbagai Jenis Input Formulir
+
+Perubahan:
+- Pada `index.php`, menambahkan pembacaan input lain setelah blok
+  penerimaan `nama`:
+  `$email`, `$semesterForm`, `$tanggal`, `$jenisPesan`, `$prodi`,
+  `$pesan` memakai `$_POST['...'] ?? ''`, dan `$minat` memakai
+  `$_POST['minat'] ?? []`.
+- Pada `index.php`, atribut checkbox diubah dari `name="minat"`
+  menjadi `name="minat[]"` agar PHP menerima beberapa pilihan
+  sebagai larik.
+- Pada `script.js`, selector `topikDipilih` diubah menjadi:
+  `'input[name="minat"]:checked, input[name="minat[]"]:checked'`
+  agar validasi bekerja pada formulir GET (`indexGet.php`) dan
+  formulir POST (`index.php`).
