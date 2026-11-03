@@ -1,9 +1,5 @@
 <?php
 // P7: penggunaan POST
-if (isset($_POST['nama'])) {
-$nama = $_POST['nama'];
-echo "Nama yang diterima: isma fitri indriani " . htmlspecialchars($nama, ENT_QUOTES, 'UTF-8');
-}
 $nama = trim((string) ($_POST['nama'] ?? ''));
 $email = trim((string) ($_POST['email'] ?? ''));
 $semesterForm = trim((string) ($_POST['semester'] ?? ''));
@@ -259,6 +255,41 @@ $nomorSemester++; // operator penugasan
         <button type="reset">Batal</button>
         <p id="formFeedback"></p>
       </form>
+      <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
+<h3>Data yang Diterima Peladen</h3>
+<p>Nama:
+<?= htmlspecialchars($nama, ENT_QUOTES, 'UTF-8') ?>
+</p>
+<p>Email:
+<?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>
+</p>
+<p>Semester:
+<?= htmlspecialchars($semesterForm, ENT_QUOTES, 'UTF-8') ?>
+</p>
+<p>Tanggal kunjungan:
+<?= htmlspecialchars($tanggal, ENT_QUOTES, 'UTF-8') ?>
+</p>
+<p>Jenis pesan:
+<?= htmlspecialchars($jenisPesan, ENT_QUOTES, 'UTF-8') ?>
+</p>
+<p>Program studi:
+<?= htmlspecialchars($prodi, ENT_QUOTES, 'UTF-8') ?>
+</p>
+<p>Minat:</p>
+<?php if (is_array($minat) && count($minat) > 0): ?>
+<ul>
+<?php foreach ($minat as $topik): ?>
+<li>
+<?= htmlspecialchars((string) $topik, ENT_QUOTES, 'UTF-8') ?>
+</li>
+<?php endforeach; ?>
+</ul>
+<?php else: ?>
+<p>Tidak ada minat yang dipilih.</p>
+<?php endif; ?>
+<p>Pesan:</p>
+<p><?= nl2br(htmlspecialchars($pesan, ENT_QUOTES, 'UTF-8')) ?></p>
+<?php endif; ?>
     </section>
 
   <footer>
