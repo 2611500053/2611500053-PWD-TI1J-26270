@@ -2,7 +2,7 @@
 session_start();
 
 // P7: Memproses data formulir dan menyimpannya ke dalam session.
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["form_type"] ?? "") !== "peminjaman") {
 	$nama = trim((string) ($_POST["nama"] ?? ""));
 	$email = trim((string) ($_POST["email"] ?? ""));
 	$semesterForm = trim((string) ($_POST["semester"] ?? ""));
@@ -75,6 +75,62 @@ switch ($programStudi) {
 	default:
 		$fokusProgramStudi = "Belum ditentukan";
 }
+
+date_default_timezone_set('Asia/Jakarta');
+
+$daftar_fasilitas = ['Ruang Kelas', 'Aula', 'Laboratorium Komputer', 'Proyektor'];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['form_type'] ?? '') === 'peminjaman') {
+    // Normalisasi: trim + rapikan spasi ganda
+    $nama       = preg_replace('/\s+/', ' ', trim($_POST['pj_nama'] ?? ''));
+    $fasilitas  = trim($_POST['pj_fasilitas'] ?? '');
+    $tanggal    = trim($_POST['pj_tanggal'] ?? '');
+    $durasi     = trim($_POST['pj_durasi'] ?? '');
+    $keperluan  = preg_replace('/\s+/', ' ', trim($_POST['pj_keperluan'] ?? ''));
+
+    $errors = [];
+
+    if (mb_strlen($nama) < 3 || mb_strlen($nama) > 50) {
+        $errors[] = 'Nama penanggung jawab harus 3-50 karakter.';
+    }
+    if (!in_array($fasilitas, $daftar_fasilitas, true)) {
+        $errors[] = 'Pilih jenis fasilitas yang tersedia.';
+    }
+    $tgl = DateTime::createFromFormat('Y-m-d', $tanggal);
+    if (!$tgl || $tgl->format('Y-m-d') !== $tanggal) {
+        $errors[] = 'Tanggal peminjaman tidak valid.';
+    } elseif ($tanggal < date('Y-m-d')) {
+        $errors[] = 'Tanggal peminjaman tidak boleh sebelum hari ini.';
+    }
+    if (filter_var($durasi, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 8]]) === false) {
+        $errors[] = 'Durasi harus angka bulat 1-8 jam.';
+    }
+    if (mb_strlen($keperluan) < 10 || mb_strlen($keperluan) > 200) {
+        $errors[] = 'Keperluan harus 10-200 karakter.';
+    }
+
+    if ($errors) {
+        $_SESSION['pj_errors'] = $errors;
+        $_SESSION['pj_old'] = ['nama' => $nama, 'fasilitas' => $fasilitas, 'tanggal' => $tanggal,
+                               'durasi' => $durasi, 'keperluan' => $keperluan];
+    } else {
+        $_SESSION['pj_list'][] = ['nama' => $nama, 'fasilitas' => $fasilitas, 'tanggal' => $tanggal,
+                                  'durasi' => (int)$durasi, 'keperluan' => $keperluan,
+                                  'waktu' => date('d/m/Y H:i')];
+        $_SESSION['pj_sukses'] = true;
+    }
+
+    // PRG: redirect lalu tampilkan lewat GET
+    header('Location: index.php#peminjaman');
+    exit;
+}
+
+// Ambil data sekali tampil (flash), lalu hapus dari session
+$pj_errors = $_SESSION['pj_errors'] ?? [];
+$pj_old    = $_SESSION['pj_old'] ?? [];
+$pj_sukses = $_SESSION['pj_sukses'] ?? false;
+$pj_list   = $_SESSION['pj_list'] ?? [];
+unset($_SESSION['pj_errors'], $_SESSION['pj_old'], $_SESSION['pj_sukses']);
 ?>
 <!doctype html>
 <html lang="id">
@@ -178,7 +234,19 @@ switch ($programStudi) {
 		<section id="peminjaman">
     <h2>Permohonan Peminjaman Fasilitas Kampus</h2>
 
-    <form id="peminjamanForm" class="js-contact-form" data-validation="peminjaman" action="index.php#peminjaman" method="post" novalidate>
+<?php if ($pj_sukses): ?>
+    <p style="color:green"><strong>Permohonan berhasil dikirim.</strong></p>
+<?php endif; ?>
+<?php if ($pj_errors): ?>
+    <ul style="color:#b91c1c">
+        <?php foreach ($pj_errors as $e): ?>
+            <li><?= htmlspecialchars($e) ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+<p id="pjPesan" style="color:#b91c1c"></p>
+
+    <form id="peminjamanForm" action="index.php#peminjaman" method="post" novalidate>
         <input type="hidden" name="form_type" value="peminjaman">
 
         <div class="form-group">
@@ -218,6 +286,26 @@ switch ($programStudi) {
         <button type="submit">Kirim</button>
         <button type="reset">Batal</button>
     </form>
+	    <?php if ($pj_list): ?>
+        <h3>Data Permohonan</h3>
+        <table border="1" cellpadding="6" cellspacing="0" style="width:100%">
+            <tr>
+                <th>No</th><th>Nama</th><th>Fasilitas</th><th>Tanggal</th>
+                <th>Durasi</th><th>Keperluan</th><th>Dikirim</th>
+            </tr>
+            <?php foreach ($pj_list as $i => $d): ?>
+            <tr>
+                <td><?= $i + 1 ?></td>
+                <td><?= htmlspecialchars($d['nama']) ?></td>
+                <td><?= htmlspecialchars($d['fasilitas']) ?></td>
+                <td><?= htmlspecialchars($d['tanggal']) ?></td>
+                <td><?= htmlspecialchars($d['durasi']) ?> jam</td>
+                <td><?= htmlspecialchars($d['keperluan']) ?></td>
+                <td><?= htmlspecialchars($d['waktu']) ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+    <?php endif; ?>
 </section>
 
 		<section id="contact">
