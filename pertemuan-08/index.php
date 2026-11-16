@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["form_type"] ?? "") !== "pe
 	$prodi = trim((string) ($_POST["prodi"] ?? ""));
 	$pesan = trim((string) ($_POST["pesan"] ?? ""));
 
-	// Checkbox dapat mengirimkan lebih dari satu nilai.
+// Checkbox dapat mengirimkan lebih dari satu nilai.
 	if (!is_array($minat)) {
 		$minat = [];
 	}
@@ -26,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["form_type"] ?? "") !== "pe
 	$_SESSION["minat"] = $minat;
 	$_SESSION["prodi"] = $prodi;
 	$_SESSION["pesan"] = $pesan;
-
 	// PRG: mencegah pengiriman POST berulang ketika halaman dimuat ulang.
 	header("Location: index.php#contact");
 	exit;

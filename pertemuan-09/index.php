@@ -1,8 +1,12 @@
 <?php
 session_start();
 
+
+$contohArray = ["isma", "fitri", "indriani"];
+echo $contohArray[0];
+
 // P7: Memproses data formulir dan menyimpannya ke dalam session.
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["form_type"] ?? "") !== "peminjaman") {
 	$nama = trim((string) ($_POST["nama"] ?? ""));
 	$email = trim((string) ($_POST["email"] ?? ""));
 	$semesterForm = trim((string) ($_POST["semester"] ?? ""));
@@ -12,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	$prodi = trim((string) ($_POST["prodi"] ?? ""));
 	$pesan = trim((string) ($_POST["pesan"] ?? ""));
 
-	// Checkbox dapat mengirimkan lebih dari satu nilai.
+// Checkbox dapat mengirimkan lebih dari satu nilai.
 	if (!is_array($minat)) {
 		$minat = [];
 	}
