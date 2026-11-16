@@ -1,26 +1,51 @@
 <?php
-//P7
-echo $_GET["nama"] . "<br>";
-echo $_GET["email"] . "<br>";
-echo $_GET["semester"] . "<br>";
-echo $_GET["tanggal"] . "<br>";
-echo $_GET["jenis_pesan"] . "<br>";
-echo $_GET["prodi"] . "<br>";
-echo $_GET["pesan"] . "<br>";
+session_start();
 
+// P7: Memproses data formulir dan menyimpannya ke dalam session.
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+	$nama = trim((string) ($_POST["nama"] ?? ""));
+	$email = trim((string) ($_POST["email"] ?? ""));
+	$semesterForm = trim((string) ($_POST["semester"] ?? ""));
+	$tanggal = trim((string) ($_POST["tanggal"] ?? ""));
+	$jenisPesan = trim((string) ($_POST["jenis_pesan"] ?? ""));
+	$minat = $_POST["minat"] ?? [];
+	$prodi = trim((string) ($_POST["prodi"] ?? ""));
+	$pesan = trim((string) ($_POST["pesan"] ?? ""));
+
+	// Checkbox dapat mengirimkan lebih dari satu nilai.
+	if (!is_array($minat)) {
+		$minat = [];
+	}
+
+	// Menyimpan setiap nilai formulir ke dalam session secara terpisah.
+	$_SESSION["nama"] = $nama;
+	$_SESSION["email"] = $email;
+	$_SESSION["semester"] = $semesterForm;
+	$_SESSION["tanggal"] = $tanggal;
+	$_SESSION["jenis_pesan"] = $jenisPesan;
+	$_SESSION["minat"] = $minat;
+	$_SESSION["prodi"] = $prodi;
+	$_SESSION["pesan"] = $pesan;
+
+	// PRG: mencegah pengiriman POST berulang ketika halaman dimuat ulang.
+	header("Location: index.php#contact");
+	exit;
+}
+
+// Mengamankan data sebelum ditampilkan kembali ke halaman HTML.
 // P6: PHP dasar dan pemrograman sisi peladen
 // Bagian 1: Variabel dan konstanta
-$nim = "0344300002";
-$namaMahasiswa = "Cantika Putih";
-$programStudi = "SI";
+$nim = "2611500053";
+$namaMahasiswa = "Isma Fitri Indriani";
+$programStudi = "TI";
 $tahunAkademik = "2026/2027";
-$semester = 4;
+$semester = 1;
 $ipk = 3.75;
 $statusAktif = true;
 $catatanTambahan = null;
 
 const NAMA_MATA_KULIAH = "Pemrograman Web Dasar";
-const PROFIL_GITHUB = "satpamal";
+const PROFIL_GITHUB = "2611500053";
 
 // Bagian 2: Operator
 $batasSemester = 8;
@@ -157,7 +182,7 @@ switch ($programStudi) {
 				<a target="_blank" href="https://github.com/<?= PROFIL_GITHUB ?>">profil GitHub saya</a>.
 			</p>
 
-			<form id="contactForm" action="index.php" method="get" novalidate>
+			<form id="contactForm" class="js-contact-form" data-validation="contact" action="index.php" method="post" novalidate>
 				<div class="form-group">
 					<label for="nama">Nama Lengkap</label><br />
 
@@ -203,10 +228,10 @@ switch ($programStudi) {
 				<div class="form-group">
 					<p>Topik yang Diminati</p>
 
-					<input type="checkbox" id="minat-html" name="minat" value="HTML" />
+					<input type="checkbox" id="minat-html" name="minat[]" value="HTML" />
 					<label for="minat-html">HTML</label>
 
-					<input type="checkbox" id="minat-css" name="minat" value="CSS" />
+					<input type="checkbox" id="minat-css" name="minat[]" value="CSS" />
 					<label for="minat-css">CSS</label>
 				</div>
 
@@ -234,8 +259,24 @@ switch ($programStudi) {
 
 				<button type="submit">Kirim</button>
 				<button type="reset">Batal</button>
-				<p id="formFeedback"></p>
+				<p class="form-feedback" data-form-feedback aria-live="polite"></p>
 			</form>
+
+			<?php if (isset($_SESSION["nama"])): ?>
+				<article id="hasilKontak" class="submission-result" aria-live="polite">
+					<h3>Data Formulir yang Dikirim</h3>
+					<p><strong>Nama Lengkap:</strong> <?= htmlspecialchars($_SESSION["nama"] ?? "", ENT_QUOTES, "UTF-8") ?></p>
+					<p><strong>Email:</strong> <?= htmlspecialchars($_SESSION["email"] ?? "", ENT_QUOTES, "UTF-8") ?></p>
+					<p><strong>Semester:</strong> <?= htmlspecialchars($_SESSION["semester"] ?? "", ENT_QUOTES, "UTF-8") ?></p>
+					<p><strong>Tanggal Kunjungan:</strong> <?= htmlspecialchars($_SESSION["tanggal"] ?? "", ENT_QUOTES, "UTF-8") ?></p>
+					<p><strong>Jenis Pesan:</strong> <?= htmlspecialchars($_SESSION["jenis_pesan"] ?? "", ENT_QUOTES, "UTF-8") ?></p>
+					<p><strong>Topik yang Diminati:</strong>
+						<?= htmlspecialchars(implode(", ", $_SESSION["minat"] ?? []), ENT_QUOTES, "UTF-8") ?>
+					</p>
+					<p><strong>Program Studi:</strong> <?= htmlspecialchars($_SESSION["prodi"] ?? "", ENT_QUOTES, "UTF-8") ?></p>
+					<p><strong>Pesan:</strong> <?= nl2br(htmlspecialchars($_SESSION["pesan"] ?? "", ENT_QUOTES, "UTF-8")) ?></p>
+				</article>
+			<?php endif; ?>
 		</section>
 	</main>
 
