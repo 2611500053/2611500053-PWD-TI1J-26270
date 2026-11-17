@@ -33,17 +33,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		$minat = [];
 	}
 
-	// Menyimpan ke dalam array session
-	$_SESSION["form_data"] = [
-		"nama" => $nama,
-		"email" => $email,
-		"semester" => $semesterForm,
-		"tanggal" => $tanggal,
-		"jenis_pesan" => $jenisPesan,
-		"minat" => $minat,
-		"prodi" => $prodi,
-		"pesan" => $pesan
-	];
+	// Menyimpan setiap nilai formulir ke dalam session secara terpisah.
+	$_SESSION["nama"] = $nama;
+	$_SESSION["email"] = $email;
+	$_SESSION["semester"] = $semesterForm;
+	$_SESSION["tanggal"] = $tanggal;
+	$_SESSION["jenis_pesan"] = $jenisPesan;
+	$_SESSION["minat"] = $minat;
+	$_SESSION["prodi"] = $prodi;
+	$_SESSION["pesan"] = $pesan;
 
 	// PRG: mencegah pengiriman POST berulang ketika halaman dimuat ulang.
 	header("Location: index.php#contact");
@@ -55,17 +53,17 @@ echo $_SESSION["form_data"]["nama"] ?? "";
 // Mengamankan data sebelum ditampilkan kembali ke halaman HTML.
 // P6: PHP dasar dan pemrograman sisi peladen
 // Bagian 1: Variabel dan konstanta
-$nim = "0344300002";
-$namaMahasiswa = "Cantika Putih";
-$programStudi = "SI";
+$nim = "2611500053";
+$namaMahasiswa = "isma fitri indriani";
+$programStudi = "TI";
 $tahunAkademik = "2026/2027";
-$semester = 4;
+$semester = 1;
 $ipk = 3.75;
 $statusAktif = true;
 $catatanTambahan = null;
 
 const NAMA_MATA_KULIAH = "Pemrograman Web Dasar";
-const PROFIL_GITHUB = "satpamal";
+const PROFIL_GITHUB = "2611500053";
 
 // Bagian 2: Operator
 $batasSemester = 8;
